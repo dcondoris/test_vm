@@ -25,4 +25,7 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             docker login -u dcondoris950 -p testvm1234
-            docker run dcondoris950/my_api_vm:latest
+            docker container stop test_vm
+            docker container rm test_vm
+            docker pull dcondoris950/my_api_vm:latest 
+            docker run --name test_vm -d -p 8000:8000 dcondoris950/my_api_vm:latest 
