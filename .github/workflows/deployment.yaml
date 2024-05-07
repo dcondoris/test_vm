@@ -14,10 +14,9 @@ jobs:
       - name: Continuous Deployment
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: XX.XX.XX.XX
-          username: ubuntu
-          password: 
-          port: 22
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
           script: |
-            docker pull
-            docker-compose up # --no-cache
+            echo Test > text.txt
